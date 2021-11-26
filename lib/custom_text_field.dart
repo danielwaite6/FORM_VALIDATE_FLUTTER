@@ -4,6 +4,8 @@ class CustomTextField extends StatelessWidget {
   final String label;
   final String? hint;
   final IconData? icon;
+  final bool obscureText;
+  final Widget? suffix;
   final String? Function(String? text)? validator;
   final void Function(String? text)? onSaved;
   final void Function(String text)? onChanged;
@@ -16,6 +18,8 @@ class CustomTextField extends StatelessWidget {
     this.validator,
     this.onSaved,
     this.onChanged,
+    this.obscureText = false,
+    this.suffix,
   }) : super(key: key);
 
   final controller = TextEditingController();
@@ -29,8 +33,10 @@ class CustomTextField extends StatelessWidget {
           validator: validator,
           onSaved: onSaved,
           onChanged: onChanged,
+          obscureText: obscureText,
           controller: controller,
           decoration: InputDecoration(
+            suffixIcon: suffix,
             labelText: label,
             hintText: hint,
             prefixIcon: icon == null ? null : Icon(icon),

@@ -14,6 +14,7 @@ class _HomePageState extends State<HomePage> {
   var user = UserModel();
   var passwordCache = '';
   var passwordCacheConfirm = '';
+  var obscureTextPassword = false;
 
   @override
   Widget build(BuildContext context) {
@@ -65,9 +66,23 @@ class _HomePageState extends State<HomePage> {
                   if (text == null || text.isEmpty) {
                     return 'This field cannot empty';
                   }
+                  if (passwordCacheConfirm != passwordCache) {
+                    return 'Password don\'t match';
+                  }
                 },
                 onSaved: (text) => user = user.copyWith(password: text),
                 onChanged: (text) => passwordCache = text,
+                obscureText: obscureTextPassword,
+                suffix: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      obscureTextPassword = !obscureTextPassword;
+                    });
+                  },
+                  icon: Icon(obscureTextPassword
+                      ? Icons.visibility
+                      : Icons.visibility_off),
+                ),
               ),
               SizedBox(height: 15),
               CustomTextField(
@@ -82,8 +97,19 @@ class _HomePageState extends State<HomePage> {
                     return 'Password don\'t match';
                   }
                 },
+                obscureText: obscureTextPassword,
                 onSaved: (text) => user = user.copyWith(password: text),
                 onChanged: (text) => passwordCacheConfirm = text,
+                suffix: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      obscureTextPassword = !obscureTextPassword;
+                    });
+                  },
+                  icon: Icon(obscureTextPassword
+                      ? Icons.visibility
+                      : Icons.visibility_off),
+                ),
               ),
               SizedBox(height: 15),
               /*Builder(builder: (context) {    
