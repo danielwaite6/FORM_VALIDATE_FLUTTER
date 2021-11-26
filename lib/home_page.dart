@@ -79,9 +79,11 @@ class _HomePageState extends State<HomePage> {
                       obscureTextPassword = !obscureTextPassword;
                     });
                   },
-                  icon: Icon(obscureTextPassword
-                      ? Icons.visibility
-                      : Icons.visibility_off),
+                  icon: Icon(
+                    obscureTextPassword
+                        ? Icons.visibility
+                        : Icons.visibility_off,
+                  ),
                 ),
               ),
               SizedBox(height: 15),
@@ -106,9 +108,11 @@ class _HomePageState extends State<HomePage> {
                       obscureTextPassword = !obscureTextPassword;
                     });
                   },
-                  icon: Icon(obscureTextPassword
-                      ? Icons.visibility
-                      : Icons.visibility_off),
+                  icon: Icon(
+                    obscureTextPassword
+                        ? Icons.visibility
+                        : Icons.visibility_off,
+                  ),
                 ),
               ),
               SizedBox(height: 15),
