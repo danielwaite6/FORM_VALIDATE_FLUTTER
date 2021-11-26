@@ -31,9 +31,14 @@ class _HomePageState extends State<HomePage> {
                 label: 'Name',
                 icon: Icons.person,
                 hint: 'Type Your Name',
-                validator: (text) => text == null || text.isEmpty
-                    ? 'This field cannot empty'
-                    : null,
+                validator: (text) {
+                  if (text == null || text.isEmpty) {
+                    return 'Field cannot be empty';
+                  }
+                  if (text.length < 5) {
+                    return 'Field name needs more 5 characters. (Has ${text.length})';
+                  }
+                },
                 onSaved: (text) => user = user.copyWith(name: text),
               ),
               SizedBox(height: 15),
